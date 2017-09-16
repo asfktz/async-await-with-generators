@@ -1,0 +1,20 @@
+{
+  "name": "@asfktz/async-wait-with-generators",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asfktz/async-wait-with-generators.git"
+  },
+  "keywords": [],
+  "author": "Asaf Katz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asfktz/async-wait-with-generators/issues"
+  },
+  "homepage": "https://github.com/asfktz/async-wait-with-generators#readme"
+}
