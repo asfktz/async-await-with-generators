@@ -1,4 +1,4 @@
-function async(it, res, err) {
+function run(it, res, err) {
   const { value, done } = err ? it.throw(err) : it.next(res);
 
   if (done) {
@@ -14,6 +14,6 @@ function async(it, res, err) {
     });
 }
 
-module.exports = function async(gen) {
+module.exports = function run(gen) {
   return next(gen());
 }
