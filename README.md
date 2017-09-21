@@ -4,7 +4,7 @@ Simple implementation of async/await using generators
 
 ### Usage:
 ```js
-run(function*() {
+async(function*() {
   try {
     const user = yield api.get('/api/users/1');
   } catch (err) {
@@ -35,7 +35,7 @@ function next(it, res, err) {
     });
 }
 
-module.exports = function run(gen) {
+module.exports = function async(gen) {
   return next(gen());
 }
 ```
