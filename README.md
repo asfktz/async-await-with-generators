@@ -37,7 +37,7 @@ getStars('facebook', 'react').then(console.log);
 ### Implementation:
 
 ```js
-function next(it, res, err) {
+const next = (it, res, err) => {
   const { value, done } = err ? it.throw(err) : it.next(res);
 
   if (done) {
@@ -47,13 +47,11 @@ function next(it, res, err) {
   return Promise.resolve(value)
     .then(res => next(it, res))
     .catch(err => next(it, null, err));
-}
+};
 
-function run(gen) {
-  return next(gen());
-}
+const run = gen => next(gen());
 
-run.wrap = (gen) => (...args) => next(gen(...args));
+run.wrap = gen => (...args) => next(gen(...args));
 
 module.exports = run;
 ```
