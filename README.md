@@ -3,7 +3,7 @@ Simple implementation of async/await using generators
 
 
 ### Usage:
-Use 'run' to return a promise:
+Use `run` to return a promise:
 ```js
 run(function* () {
   try {
