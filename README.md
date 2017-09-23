@@ -12,9 +12,7 @@ run(function*() {
   } catch (err) {
     return `Couldn't get the stars number`;
   }
-}).then((stars) => {
-  // ...
-});
+}).then((stars) => { ... })
 ```
 
 ```js
@@ -28,10 +26,7 @@ const getStars = run.wrap(function*(username, repo) {
   }
 });
 
-getStars('facebook', 'react')
-  .then((stars) => {
-    // ...
-  });
+getStars('facebook', 'react').then((stars) => { ... })
 ```
 
 
