@@ -4,15 +4,33 @@ Simple implementation of async/await using generators
 
 ### Usage:
 ```js
-run(function*() {
+const getStars = (username, repo) => {
+  return run(function*() {
+    try {
+      const res  = yield fetch(`https://api.github.com/repos/${username}/${repo}`);
+      const data = yield res.json();
+      return data.stargazers_count;
+    } catch (err) {
+      return `Couldn't get the stars number`;
+    }
+  });
+};
+```
+
+```js
+const getStars = run.wrap(function*(username, repo) {
   try {
-    const user = yield api.get('/api/users/1');
+    const res  = yield fetch(`https://api.github.com/repos/${username}/${repo}`);
+    const data = yield res.json();
+    return data.stargazers_count;
   } catch (err) {
-    console.error('user not found!')
+    return `Couldn't get the stars number`;
   }
-}).then(() => {
-  console.log('done!')
 });
+```
+
+```js
+getStars('facebook', 'react').then(console.log);
 ```
 
 
@@ -27,15 +45,15 @@ function next(it, res, err) {
   }
 
   return Promise.resolve(value)
-    .then(res => {
-      return next(it, res);
-    })
-    .catch(err => {
-      return next(it, null, err);
-    });
+    .then(res => next(it, res))
+    .catch(err => next(it, null, err));
 }
 
-module.exports = function run(gen) {
+function run(gen) {
   return next(gen());
 }
+
+run.wrap = (gen) => (...args) => next(gen(...args));
+
+module.exports = run;
 ```
