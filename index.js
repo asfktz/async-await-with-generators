@@ -1,4 +1,4 @@
-function run(it, res, err) {
+const next = (it, res, err) => {
   const { value, done } = err ? it.throw(err) : it.next(res);
 
   if (done) {
@@ -6,14 +6,12 @@ function run(it, res, err) {
   }
 
   return Promise.resolve(value)
-    .then(res => {
-      return next(it, res);
-    })
-    .catch(err => {
-      return next(it, null, err);
-    });
-}
+    .then(res => next(it, res))
+    .catch(err => next(it, null, err));
+};
 
-module.exports = function run(gen) {
-  return next(gen());
-}
+const run = gen => next(gen());
+
+run.wrap = gen => (...args) => next(gen(...args));
+
+module.exports = run;
