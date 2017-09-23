@@ -12,7 +12,8 @@ run(function*() {
   } catch (err) {
     return `Couldn't get the stars number`;
   }
-}).then((stars) => { ... })
+})
+.then((stars) => { ... })
 ```
 
 ```js
