@@ -1,4 +1,4 @@
-# async-wait-with-generators
+# async-await-with-generators
 Simple implementation of async/await using generators
 
 
