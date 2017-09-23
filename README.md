@@ -44,7 +44,7 @@ const next = (it, res, err) => {
   }
 
   return Promise.resolve(value)
-    .then(res => next(it, res))
+    .then(res  => next(it, res))
     .catch(err => next(it, null, err));
 };
 
