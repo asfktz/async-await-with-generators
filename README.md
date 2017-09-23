@@ -4,17 +4,17 @@ Simple implementation of async/await using generators
 
 ### Usage:
 ```js
-const getStars = (username, repo) => {
-  return run(function*() {
-    try {
-      const res  = yield fetch(`https://api.github.com/repos/${username}/${repo}`);
-      const data = yield res.json();
-      return data.stargazers_count;
-    } catch (err) {
-      return `Couldn't get the stars number`;
-    }
-  });
-};
+run(function*() {
+  try {
+    const res  = yield fetch(`https://api.github.com/repos/facebook/react`);
+    const data = yield res.json();
+    return data.stargazers_count;
+  } catch (err) {
+    return `Couldn't get the stars number`;
+  }
+}).then((stars) => {
+  // ...
+});
 ```
 
 ```js
@@ -27,10 +27,11 @@ const getStars = run.wrap(function*(username, repo) {
     return `Couldn't get the stars number`;
   }
 });
-```
 
-```js
-getStars('facebook', 'react').then(console.log);
+getStars('facebook', 'react')
+  .then((stars) => {
+    // ...
+  });
 ```
 
 
