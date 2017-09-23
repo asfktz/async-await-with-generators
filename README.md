@@ -3,6 +3,7 @@ Simple implementation of async/await using generators
 
 
 ### Usage:
+Return a promise:
 ```js
 run(function* () {
   try {
@@ -16,6 +17,7 @@ run(function* () {
 .then((stars) => { ... })
 ```
 
+Or, use `run.wrap` to return a function that returns a promise:
 ```js
 const getStars = run.wrap(function* (username, repo) {
   try {
