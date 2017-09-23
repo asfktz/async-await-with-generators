@@ -48,9 +48,9 @@ const next = (it, res, err) => {
     .catch(err => next(it, null, err));
 };
 
-const run = gen => next(gen());
+const run = (gen) => next(gen());
 
-run.wrap = gen => (...args) => next(gen(...args));
+run.wrap  = (gen) => (...args) => next(gen(...args));
 
 module.exports = run;
 ```
