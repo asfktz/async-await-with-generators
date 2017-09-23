@@ -4,7 +4,7 @@ Simple implementation of async/await using generators
 
 ### Usage:
 ```js
-run(function*() {
+run(function* () {
   try {
     const res  = yield fetch(`https://api.github.com/repos/facebook/react`);
     const data = yield res.json();
@@ -17,7 +17,7 @@ run(function*() {
 ```
 
 ```js
-const getStars = run.wrap(function*(username, repo) {
+const getStars = run.wrap(function* (username, repo) {
   try {
     const res  = yield fetch(`https://api.github.com/repos/${username}/${repo}`);
     const data = yield res.json();
