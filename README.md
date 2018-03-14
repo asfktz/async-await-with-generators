@@ -3,7 +3,7 @@ Simple implementation of async/await using generators
 
 
 ### Usage:
-Use `run` to return a promise:
+Call `run` with a generator to start an `async` flow immediately, use `yield` instead of `await`
 ```js
 run(function* () {
   try {
@@ -17,7 +17,7 @@ run(function* () {
 .then((stars) => { ... })
 ```
 
-Or, use `run.wrap` to return a function that returns a promise:
+Or, use `run.wrap` to return a function instead
 ```js
 const getStars = run.wrap(function* (username, repo) {
   try {
